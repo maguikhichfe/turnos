@@ -62,7 +62,14 @@ COMBOS_DURACION = {
 
 app = Flask(__name__)
 print("DEPLOY NUEVO")
-app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL")
+
+# Railway (y Heroku) a veces exponen la URL de Postgres como "postgres://",
+# pero SQLAlchemy moderno requiere el prefijo "postgresql://"
+_database_url = os.environ.get("DATABASE_URL")
+if _database_url and _database_url.startswith("postgres://"):
+    _database_url = _database_url.replace("postgres://", "postgresql://", 1)
+
+app.config["SQLALCHEMY_DATABASE_URI"] = _database_url
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 db.init_app(app)
