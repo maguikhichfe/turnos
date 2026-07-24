@@ -1,15 +1,21 @@
 :root {
-  --verde-base: #a8c3a1;
-  --verde-oscuro: #2f4f2f;
-  --verde-navbar: #2f4f2f;
-  --verde-claro: #e7ffad;
-  --verde-medio: #7aa43b;
-  --verde-hover: #8fd64e;
-  --verde-texto: #2d4a2d;
+  --verde-base: #c3d3ba;
+  --verde-oscuro: #1f3a24;
+  --verde-navbar: #1f3a24;
+  --verde-claro: #e3ead9;
+  --verde-medio: #3d5c3a;
+  --verde-hover: var(--dorado);
+  --verde-suave: #6f8168;
+  --verde-texto: #1f3a24;
+  --dorado: #b8935f;
+  --dorado-oscuro: #8a6a3f;
+  --dorado-suave: #f0e6d2;
+  --superficie-suave: #edf1e6;
+  --borde-suave: #d9dfd0;
   --fondo: #f5f5f0;
-  --fondo-alt: #efffe1;
-  --texto: #444;
-  --texto-suave: #777;
+  --fondo-alt: #f6f8f2;
+  --texto: #363b34;
+  --texto-suave: #6f7269;
   --sombra-suave: 0 8px 20px rgba(0, 0, 0, 0.06);
   --sombra-media: 0 10px 25px rgba(0, 0, 0, 0.08);
   --radio-card: 18px;
@@ -37,7 +43,7 @@ scroll-behavior:smooth;
 .carousel-section h2 {
   font-family: 'Playfair Display';
   margin-bottom: 30px;
-  color: #6f8f6f;
+  color: var(--verde-suave);
 }
 
 
@@ -167,7 +173,7 @@ scroll-behavior:smooth;
   margin: auto;
   border-radius: 25px;
   box-shadow: 0 15px 30px rgba(0,0,0,0.08);
-  background: #e8f2d8;
+  background: var(--superficie-suave);
   padding: 48px 20px;
 }
 
@@ -182,7 +188,7 @@ scroll-behavior:smooth;
 
 .precio-bloque {
   background: #ffffff;
-  border: 0.5px solid #b0cc98;
+  border: 0.5px solid var(--borde-suave);
   border-radius: 16px;
   padding: 20px 18px;
   max-width: 480px;
@@ -198,7 +204,7 @@ scroll-behavior:smooth;
   letter-spacing: 0.1em;
   margin: 0 0 14px;
   padding-bottom: 10px;
-  border-bottom: 0.5px solid #daecc8;
+  border-bottom: 0.5px solid var(--borde-suave);
 }
 
 .fila {
@@ -206,14 +212,14 @@ scroll-behavior:smooth;
   justify-content: space-between;
   align-items: center;
   padding: 11px 0;
-  border-bottom: 0.5px solid #f0f7e8;
+  border-bottom: 0.5px solid var(--borde-suave);
 }
 
 .fila span {
   font-family: 'Jost', sans-serif;
   font-size: 13px;
   font-weight: 400;
-  color: #3a5a3a;
+  color: var(--verde-texto);
 }
 
 .fila strong {
@@ -228,7 +234,7 @@ scroll-behavior:smooth;
   font-family: 'Jost', sans-serif;
   font-size: 11px;
   font-weight: 300;
-  color: #7a9a7a;
+  color: var(--verde-suave);
 }
 .fila:last-child {
   border-bottom: none;
@@ -242,7 +248,7 @@ scroll-behavior:smooth;
 
 /* CONTROL DE SECCIONES */
 .calendar-grid button.day.selected {
-  background: var(--verde-medio);  /* verde destacado */
+  background: var(--dorado);  /* acento dorado premium */
   color: white;
   font-weight: bold;
   transform: scale(1.1);  /* opcional, efecto de “pop” */
@@ -304,14 +310,14 @@ color: var(--verde-medio);
 .beauty-header{
 text-align:center;
 padding:50px 20px;
-background:linear-gradient(180deg,#eeffcd,#efffe1);
+background:linear-gradient(180deg, var(--verde-claro), var(--fondo-alt));
 }
 
 .beauty-header h1{
 font-family:'Dancing Script';
 font-size:60px;
 margin:0;
-color:#5c8c3c;
+color: var(--verde-medio);
 }
 
 .beauty-header span{
@@ -384,7 +390,7 @@ box-shadow:0 12px 30px rgba(0,0,0,0.08);
 }
 
 .home-card.outline{
-background:#eeffcd;
+background: var(--superficie-suave);
 }
 
 
@@ -407,7 +413,7 @@ transition: border-color 0.3s ease;
 
 input:focus{
 outline:none;
-border:1px solid #b8f27c;
+border:1px solid var(--dorado);
 }
 
 
@@ -509,14 +515,14 @@ transition:0.3s;
 
 button:hover{
 transform:translateY(-3px);
-background:#d9ff90;
+background: var(--superficie-suave);
 }
 
 
 /* SOBRE NOSOTRAS */
 
 .sobre{
-  background: #c8ddb0;
+  background: var(--superficie-suave);
   padding: 48px 20px;
   display: flex;
   justify-content: center;
@@ -524,7 +530,7 @@ background:#d9ff90;
 
 .sobre-card{
   background: #ffffff;
-  border: 0.5px solid #b0cc98;
+  border: 0.5px solid var(--borde-suave);
   border-radius: 18px;
   padding: 32px 24px;
   max-width: 480px;
@@ -543,13 +549,13 @@ background:#d9ff90;
   font-family: 'Jost', sans-serif;
   font-size: 14px;
   font-weight: 300;
-  color: #4a6a4a;
+  color: var(--verde-texto);
   line-height: 1.8;
   margin: 0 0 20px;
 }
 .sobre-card p:last-child {
   margin: 0;
-  background: #e8f2d8;
+  background: var(--superficie-suave);
   border-radius: 12px;
   padding: 16px;
   font-weight: 400;
@@ -587,7 +593,7 @@ transition:0.3s;
 .card small {
   display: block;
   margin-top: 5px;
-  color: #6f8f6f;
+  color: var(--verde-suave);
   font-weight: 500;
 }
 
@@ -637,9 +643,9 @@ margin-top:50px;
 .time-slot {
   padding: 10px 14px;
   border-radius: 12px;
-  border: 1px solid #b8f27c; /* verde de tu paleta */
-  background: var(--verde-claro);        /* verde claro */
-  color: #5c8c3c;             /* verde oscuro para texto */
+  border: 1px solid var(--borde-suave);
+  background: var(--verde-claro);
+  color: var(--verde-medio);
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -647,14 +653,14 @@ margin-top:50px;
 
 /* Hover de horario disponible */
 .time-slot:hover {
-  background: #d9ff90;        /* verde un poco más intenso */
+  background: var(--superficie-suave);
 }
 
 /* Horario ocupado */
 .time-slot.occupied {
-  background: #f0f5e6;        /* verde muy suave */
-  color: #a0b89c;             /* verde apagado para el texto */
-  border: 1px dashed #c4ddb3; /* borde punteado */
+  background: var(--superficie-suave);
+  color: var(--texto-suave);
+  border: 1px dashed var(--borde-suave);
   text-decoration: line-through; /* tachado */
   opacity: 0.65;              /* semi-transparente */
   cursor: not-allowed;
@@ -664,7 +670,7 @@ margin-top:50px;
 .time-slot.occupied:hover::after {
   content: "Horario ocupado";
   position: absolute;
-  background: #b8f27c;
+  background: var(--verde-oscuro);
   color: white;
   padding: 4px 8px;
   border-radius: 6px;
@@ -676,11 +682,11 @@ margin-top:50px;
   pointer-events: none;
 }
 
-/* Horario seleccionado */
+/* Horario seleccionado: acento dorado premium */
 .time-slot.selected {
-  background: #b8f27c; /* verde fuerte de tu paleta */
+  background: var(--dorado);
   color: white;
-  border: 1px solid var(--verde-hover);
+  border: 1px solid var(--dorado-oscuro);
 }
 
 
@@ -697,7 +703,7 @@ align-items:center;
   align-items: center;
   text-align: center;
   padding: 60px 20px;
-  background: #e8f2d8;
+  background: var(--superficie-suave);
   color: var(--verde-texto);
 }
 
@@ -844,8 +850,8 @@ align-items:center;
 
 
   .navbar .nav-links li a:hover {
-    background: #d4f7dc;
-    color: #2d6a4f;
+    background: var(--dorado-suave);
+    color: var(--verde-texto);
     transform: translateY(-2px);
   }
 
@@ -859,7 +865,7 @@ align-items:center;
     align-items: center;
     text-align: center;
     padding: 40px 15px;
-    background: #e8f2d8;
+    background: var(--superficie-suave);
     color: var(--verde-texto);
   }
 
@@ -949,7 +955,7 @@ align-items:center;
 .navbar{
 padding:15px 20px;
 flex-wrap:wrap;
-background:#2f4f2f;
+background: var(--verde-navbar);
 }
 
 /* botón hamburguesa */
@@ -959,7 +965,7 @@ display:block;
 position:absolute;
 right:20px;
 top:18px;
-background: linear-gradient(180deg,#e8f5d0,#d9ecb8);
+background: linear-gradient(180deg, var(--verde-claro), var(--superficie-suave));
 color: var(--verde-oscuro);
 box-shadow: 0 5px 15px rgba(0,0,0,0.15);
 border-radius:50%;
@@ -1002,7 +1008,7 @@ list-style:none;
 display:block;
 text-align:center;
 padding:14px;
-background: linear-gradient(145deg,var(--verde-claro),#d4f7dc);
+background: linear-gradient(145deg, var(--verde-claro), var(--superficie-suave));
 color: var(--verde-oscuro);
 border-radius:40px;
 width:85%;
@@ -1015,6 +1021,6 @@ font-size:16px;
 
 .nav-links a:hover{
   transform: translateY(-3px) scale(1.02);
-  background: #c7e7a1;
+  background: var(--dorado-suave);
 }
 }

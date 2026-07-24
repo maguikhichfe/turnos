@@ -24,7 +24,7 @@ padding:0;
       font-family: 'Cormorant Garamond', serif;
       font-size: 22px;
       font-weight: 600;
-      color: #2d4a2d;
+      color: var(--verde-texto);
       letter-spacing: -1px;
     }
 
@@ -33,8 +33,8 @@ padding:0;
       width: 80px;
       height: 80px;
       border-radius: 50%;
-      background: #e8f2d8;
-      border: 3px solid #2d4a2d;
+      background: var(--superficie-suave);
+      border: 3px solid var(--verde-texto);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -53,8 +53,8 @@ cursor:pointer;
 
 body{
 font-family:'Poppins',sans-serif;
-background:#e8f2d8;
-color:#333;
+background:var(--superficie-suave);
+color: var(--texto);
 }
 html, body {
   margin: 0;
@@ -69,20 +69,20 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 padding:18px 30px;
-background:#faffec;
+background:var(--superficie-suave);
 box-shadow:0 4px 20x rgba(0,0,0,0.08);
 }
 
 .top-nav a{
 text-decoration:none;
-color:#444;
+color: var(--texto);
 margin-left:20px;
 font-weight:500;
 transition:0.3s;
 }
 
 .top-nav a:hover{
-color:#7aa43b;
+color:var(--verde-medio);
 }
 
 /* HEADER */
@@ -90,18 +90,18 @@ color:#7aa43b;
 .beauty-header{
 text-align:center;
 padding:60px 20px 40px;
-background:#e8f2d8;
+background:var(--superficie-suave);
 }
 
 .beauty-header h1{
 font-family:'Playfair Display',serif;
 font-size:48px;
-color:#2d4a2d;
+color:var(--verde-texto);
 }
 
 .beauty-header span{
 font-size:18px;
-color:#777;
+color: var(--texto-suave);
 }
 
 /* CONTAINER */
@@ -139,7 +139,7 @@ margin-bottom:10px;
 }
 
 .subtitle{
-color:#666;
+color: var(--texto-suave);
 margin-bottom:40px;
 }
 
@@ -157,7 +157,7 @@ font-size:18px;
 border:none;
 border-radius:14px;
 cursor:pointer;
-background:#e8f2d8;
+background:var(--superficie-suave);
 transition:0.3s;
 font-weight:500;
 }
@@ -175,7 +175,7 @@ box-shadow:0 10px 20px rgba(0,0,0,0.1);
 
 .home-card.outline{
 background:white;
-border:2px solid #e8f2d8;
+border:2px solid var(--superficie-suave);
 }
 
 /* PROGRESS */
@@ -204,7 +204,7 @@ font-weight:bold;
 }
 
 .progress-step.active .step-number{
-background:#e8f2d8;
+background:var(--superficie-suave);
 }
 
 /* STEPS */
@@ -234,7 +234,7 @@ gap:20px;
 }
 
 .select-card{
-background:#e8f2d8;
+background:var(--superficie-suave);
 padding:20px;
 border-radius:14px;
 cursor:pointer;
@@ -247,7 +247,8 @@ transform:translateY(-3px);
 }
 
 .select-card.selected{
-background:#e8f2d8;
+background: var(--dorado-suave);
+border: 1px solid var(--dorado);
 }
 
 .card-info{
@@ -290,7 +291,7 @@ gap:25px;
 
 .calendar-card,
 .time-card{
-background:#faffec;
+background:var(--superficie-suave);
 padding:25px;
 border-radius:14px;
 width:100%;
@@ -306,7 +307,7 @@ margin-bottom:10px;
 
 .calendar-header button{
 border:none;
-background:#e8f2d8;
+background:var(--superficie-suave);
 padding:6px 12px;
 border-radius:6px;
 cursor:pointer;
@@ -335,7 +336,7 @@ background:white;
 }
 
 .calendar-grid button:hover{
-background:#e8f2d8;
+background:var(--superficie-suave);
 }
 
 /* TIMES */
@@ -350,7 +351,7 @@ margin-top:15px;
 .time-grid button{
 padding:10px;
 border:none;
-background:#e8f2d8;
+background:var(--superficie-suave);
 border-radius:8px;
 cursor:pointer;
 }
@@ -375,7 +376,7 @@ gap:10px;
 }
 
 .primary{
-background:#e8f2d8;
+background:var(--superficie-suave);
 border:none;
 padding:12px 25px;
 border-radius:10px;
@@ -410,14 +411,14 @@ display:block;
 footer{
 text-align:center;
 padding:30px;
-color:#777;
+color: var(--texto-suave);
 }
 .top-nav{
 display:flex;
 justify-content:space-between;
 align-items:center;
 padding:18px 60px;
-background:#2d4a2d;
+background:var(--verde-texto);
 box-shadow:0 3px 10px rgba(0,0,0,0.05);
 position:sticky;
 top:0;
@@ -426,14 +427,14 @@ z-index:100;
 
 .top-nav a{
 text-decoration:none;
-color:#444;
+color: var(--texto);
 font-weight:500;
 margin-left:25px;
 transition:0.3s;
 }
 
 .top-nav a:hover{
-color:#7aa43b;
+color:var(--verde-medio);
 }
 
 .nav-left,
@@ -458,7 +459,7 @@ align-items:center;
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
-        background: #2f4f2f;;
+        background: var(--verde-navbar);
         padding: 38px 20px;
         flex-wrap: wrap;
         width: 100%;
@@ -468,7 +469,7 @@ align-items:center;
 
     .menu-toggle {
         display: block;
-        background: #e8f2d8;
+        background: var(--superficie-suave);
         border: none;
         border-radius: 20px;
         padding: 10px 14px;
@@ -496,7 +497,7 @@ align-items:center;
     }
 
     .nav-right a {
-        background: linear-gradient(145deg,#e7ffad,#d4f7dc);
+        background: linear-gradient(145deg, var(--verde-claro), var(--superficie-suave));
         color: var(--verde-oscuro);
         display:block;
         padding: 14px;
