@@ -4,12 +4,9 @@
   --verde-navbar: #1f3a24;
   --verde-claro: #e3ead9;
   --verde-medio: #3d5c3a;
-  --verde-hover: var(--dorado);
+  --verde-hover: #2f4a2c;
   --verde-suave: #6f8168;
   --verde-texto: #1f3a24;
-  --dorado: #b8935f;
-  --dorado-oscuro: #8a6a3f;
-  --dorado-suave: #f0e6d2;
   --superficie-suave: #edf1e6;
   --borde-suave: #d9dfd0;
   --fondo: #f5f5f0;
@@ -248,7 +245,7 @@ scroll-behavior:smooth;
 
 /* CONTROL DE SECCIONES */
 .calendar-grid button.day.selected {
-  background: var(--dorado);  /* acento dorado premium */
+  background: var(--verde-medio);  /* verde destacado */
   color: white;
   font-weight: bold;
   transform: scale(1.1);  /* opcional, efecto de “pop” */
@@ -413,7 +410,7 @@ transition: border-color 0.3s ease;
 
 input:focus{
 outline:none;
-border:1px solid var(--dorado);
+border:1px solid var(--verde-medio);
 }
 
 
@@ -682,11 +679,11 @@ margin-top:50px;
   pointer-events: none;
 }
 
-/* Horario seleccionado: acento dorado premium */
+/* Horario seleccionado */
 .time-slot.selected {
-  background: var(--dorado);
+  background: var(--verde-medio);
   color: white;
-  border: 1px solid var(--dorado-oscuro);
+  border: 1px solid var(--verde-oscuro);
 }
 
 
@@ -850,7 +847,7 @@ align-items:center;
 
 
   .navbar .nav-links li a:hover {
-    background: var(--dorado-suave);
+    background: var(--superficie-suave);
     color: var(--verde-texto);
     transform: translateY(-2px);
   }
@@ -1021,6 +1018,6 @@ font-size:16px;
 
 .nav-links a:hover{
   transform: translateY(-3px) scale(1.02);
-  background: var(--dorado-suave);
+  background: var(--superficie-suave);
 }
 }
