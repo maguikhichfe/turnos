@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Marian Beauty</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+<script src="{{ url_for('static', filename='script.js') }}" defer></script>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600&family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<!-- NAVBAR -->
+<nav class="navbar">
+
+<div class="logo">Marian Beauty</div>
+
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+<ul class="nav-links" id="navLinks">
+<li><a href="#sobre">Sobre Nosotras</a></li>
+<li><a href="#precios-premium">Precios</a></li>
+<li><a href="/reservas#mis-turnos">Mis Turnos</a></li>
+</ul>
+
+</nav>
+<!-- HERO -->
+<section id="home">
+
+<section class="hero">
+
+<div class="hero-content">
+
+<h1>Tu espacio de belleza</h1>
+
+<p>Manicuría profesional con amor por cada detalle 💅</p>
+
+<button class="cta" onclick="window.location.href='{{ url_for('reservas') }}'">
+  Reservar Turno
+</button>
+</div>
+
+</section>
+</section>
+
+
+<!-- SOBRE NOSOTRAS -->
+
+<section id="sobre" class="sobre">
+
+<div class="sobre-card">
+
+<h2>Sobre Nosotras</h2>
+
+<p>
+Somos un estudio de manicura dedicado a realzar tu belleza natural.
+Cada servicio está pensado para brindarte una experiencia relajante,
+cálida y profesional.
+</p>
+
+<p>
+💅 Cuidado profesional<br>
+✨ Atención personalizada<br>
+🌿 Productos de calidad
+</p>
+
+</div>
+
+</section>
+
+  <section class="carousel-section">
+
+  <h2>Trabajos realizados</h2>
+
+  <div class="carousel">
+
+    <button class="carousel-btn prev" onclick="moveSlide(-1)">❮</button>
+
+    <div class="carousel-track" id="carouselTrack">
+
+      <img src="/static/img1.jpg" alt="Trabajo 1">
+      <img src="/static/img2.jpg" alt="Trabajo 2">
+      <img src="/static/img3.jpg" alt="Trabajo 3">
+      <img src="/static/unias1.jpeg" alt="Trabajo 4">
+      <img src="/static/unias2.jpeg" alt="Trabajo 5">
+      <img src="/static/unias3.jpeg" alt="Trabajo 6">
+      <img src="/static/unias4.jpeg" alt="Trabajo 7">
+      <img src="/static/unias5.jpeg" alt="Trabajo 8">
+      <img src="/static/unias6.jpeg" alt="Trabajo 9">
+      <img src="/static/unias7.jpeg" alt="Trabajo 10">
+      <img src="/static/unias8.jpeg" alt="Trabajo 11">
+      <img src="/static/unias9.jpeg" alt="Trabajo 12">
+      <img src="/static/unias10.jpeg" alt="Trabajo 13">
+      <img src="/static/unias11.jpeg" alt="Trabajo 14">
+      <img src="/static/unias12.jpeg" alt="Trabajo 15">
+      <img src="/static/unias13.jpeg" alt="Trabajo 16">
+      <img src="/static/unias14.jpeg" alt="Trabajo 17">
+      <img src="/static/unias15.jpeg" alt="Trabajo 18">
+    
+
+    </div>
+
+    <button class="carousel-btn next" onclick="moveSlide(1)">❯</button>
+
+  </div>
+
+</section>
+
+
+<!-- PRECIOS -->
+
+<section id="precios-premium" class="precios-premium">
+
+  <h2>Lista de precios</h2>
+
+  <div class="precio-bloque">
+    <h3>💅 Manos</h3>
+
+    <div class="fila">
+      <span>Manicura completa</span>
+      <div>
+        <strong>$13.000</strong>
+        <small>$12.000 efectivo</small>
+      </div>
+    </div>
+
+    <div class="fila">
+      <span>Esmaltado común</span>
+      <div>
+        <strong>$17.000</strong>
+        <small>$15.000 efectivo</small>
+      </div>
+    </div>
+
+    <div class="fila">
+      <span>Semipermanente</span>
+      <div>
+        <strong>$24.500</strong>
+        <small>$22.000 efectivo</small>
+      </div>
+    </div>
+
+    <div class="fila">
+      <span>Kapping / Dipping</span>
+      <div>
+        <strong>$30.000</strong>
+        <small>$27.000 efectivo</small>
+      </div>
+    </div>
+
+    <div class="fila">
+      <span>Soft gel</span>
+      <div>
+        <strong>$37.000</strong>
+        <small>$34.000 efectivo</small>
+      </div>
+    </div>
+  </div>
+
+  <div class="precio-bloque">
+    <h3>🦶 Pies</h3>
+
+    <div class="fila">
+      <span>Belleza de pies</span>
+      <div>
+        <strong>$27.500</strong>
+        <small>$25.000 efectivo</small>
+      </div>
+    </div>
+
+    <div class="fila">
+      <span>Pedicuría</span>
+      <div>
+        <strong>$32.000</strong>
+        <small>$29.000 efectivo</small>
+      </div>
+    </div>
+  </div>
+
+  <div class="precio-bloque">
+    <h3>❌ Retiros</h3>
+
+    <div class="fila">
+      <span>Retiro semipermanente</span>
+      <div>
+        <strong>$10.000</strong>
+        <small>$9.000 efectivo</small>
+      </div>
+    </div>
+
+    <div class="fila">
+      <span>Retiro kapping/Dipping</span>
+      <div>
+        <strong>$11.000</strong>
+        <small>$10.000 efectivo</small>
+      </div>
+    </div>
+
+    <div class="fila">
+      <span>Retiro soft gel</span>
+      <div>
+        <strong>$13.000</strong>
+        <small>$12.000 efectivo</small>
+      </div>
+    </div>
+
+    <div class="fila">
+      <span>Arreglos (por uña)</span>
+      <div>
+        <strong>Desde $2.500</strong>
+        <small>$2.500 efectivo</small>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- MIS TURNOS -->
+<section id="contacto" class="contacto">
+  <h2>Contáctanos & Visítanos</h2>
+
+  <!-- Mapa de Google Maps -->
+  <div class="map-container">
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3283.514247495416!2d-58.458536425332824!3d-34.61644275816846!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccb75748cfbad%3A0xa18a71763146b08a!2sMarian%20beauty%20Nails!5e0!3m2!1ses!2sar!4v1773176454074!5m2!1ses!2sar" 
+      width="100%" 
+      height="400" 
+      style="border:0;" 
+      allowfullscreen="" 
+      loading="lazy" 
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+
+  <!-- Contacto -->
+  <div class="contact-info">
+    <a href="https://wa.me/5491163095231" target="_blank" class="contact-btn whatsapp">
+      <img src="https://cdn-icons-png.flaticon.com/512/124/124034.png" alt="WhatsApp" />
+      WhatsApp
+    </a> 
+    <a href="https://www.instagram.com/marianbeautyok/" target="_blank" class="contact-btn instagram">
+      <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram" />
+      Instagram
+    </a>
+  </div>
+</section>
+
+
+<footer>
+
+<p>© Marian Nails Studio</p>
+
+</footer>
+
+</body>
+</html>

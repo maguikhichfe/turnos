@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Sobre Nosotras | Marian Beauty</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+
+<!-- NAV SIMPLE (igual al index) -->
+<nav class="top-nav">
+    <div>
+        <a href="/">Inicio</a>
+    </div>
+    <div>
+        <a href="/sobre-nosotras">Sobre Nosotras</a>
+        <a href="/precios">Precios</a>
+    </div>
+</nav>
+
+<header class="beauty-header">
+    <div class="header-inner">
+        <h1>Marian Beauty</h1>
+        <span>Centro de Belleza</span>
+    </div>
+</header>
+
+<main class="page-container">
+
+    <h2 class="section-title">Sobre Nosotras</h2>
+
+    <!-- TEXTO -->
+    <div class="about-card">
+        <p>
+            En Marian Beauty creemos que cada detalle importa. 
+            Nuestro equipo está formado por profesionales apasionadas por la estética, 
+            el cuidado y la atención personalizada.
+        </p>
+
+        <p>
+            Nos enfocamos en brindar una experiencia cálida, relajante y profesional, 
+            utilizando productos de alta calidad y técnicas actualizadas.
+        </p>
+    </div>
+
+    <!-- CARRUSEL -->
+    <div class="carousel">
+        <img src="/static/img1.jpg" class="active">
+        <img src="/static/img2.jpg">
+        <img src="/static/img3.jpg">
+    </div>
+
+</main>
+
+<footer>
+    © 2026 Marian Beauty
+</footer>
+
+<script>
+let index = 0;
+const images = document.querySelectorAll(".carousel img");
+
+setInterval(() => {
+    images[index].classList.remove("active");
+    index = (index + 1) % images.length;
+    images[index].classList.add("active");
+}, 3500);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Próximas Clientas</title>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fdf6f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .filtro-profesional {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .filtro-profesional select {
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+            min-width: 220px;
+        }
+
+
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            background: linear-gradient(135deg, #ff77a9, #d63384);
+            color: white;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+
+        header p {
+            margin: 5px 0 0;
+            font-weight: 300;
+            font-size: 16px;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 0 15px;
+        }
+
+        .filtro-fecha {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 25px;
+            gap: 10px;
+        }
+
+        .filtro-fecha input {
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+        }
+
+        .filtro-fecha button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 10px;
+            background-color: #d63384;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .filtro-fecha button:hover {
+            background-color: #c2186a;
+        }
+
+        .turnos-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        .turno-card {
+            background: white;
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .turno-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+        }
+
+        .turno-card h3 {
+            margin: 0;
+            font-size: 20px;
+            color: #d63384;
+        }
+
+        .turno-card p {
+            margin: 5px 0;
+            color: #555;
+            font-size: 14px;
+        }
+
+        .acciones {
+            margin-top: 15px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+
+        .acciones button {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 14px;
+            transition: background 0.2s;
+        }
+
+        .realizado {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .realizado:hover {
+            background-color: #218838;
+        }
+
+        .cancelar {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .cancelar:hover {
+            background-color: #c82333;
+        }
+
+        @media(max-width: 500px) {
+            .turnos-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Mis Próximas Clientas</h1>
+        <p>Filtra por fecha para ver solo los turnos del día</p>
+    </header>
+
+    <main>
+        <!-- Selector de profesional -->
+        <div class="filtro-profesional">
+            <select id="profesional-select" onchange="cambiarProfesional()">
+                <option value="">Seleccionar profesional</option>
+                <option value="tania">Tania</option>
+                <option value="rocio">Rocio</option>
+                <option value="pamela">Pamela</option>
+                <!-- agregá las que tengas -->
+            </select>
+        </div>
+
+        
+        <!-- Selector de fecha -->
+        <div class="filtro-fecha">
+            <input type="date" id="fecha-turnos">
+            <button onclick="filtrarTurnos()">Ver Turnos</button>
+        </div>
+
+        <div id="turnos-container" class="turnos-container">
+            <!-- Las tarjetas se insertan aquí -->
+        </div>
+    </main>
+
+    <script>
+        let profesionalActual = "";
+        let todosLosTurnos = [];
+
+        async function cargarTurnos(profesional) {
+            if (!profesional) return;
+        
+            try {
+                const res = await fetch(`/manicuristas/turnos/${profesional}`);
+                const data = await res.json();
+        
+                todosLosTurnos = Array.isArray(data) ? data : [];
+                mostrarTurnosPorFecha();
+        
+            } catch (err) {
+                console.error("Error cargando turnos:", err);
+                todosLosTurnos = [];
+            }
+        }
+        function cambiarProfesional() {
+                const select = document.getElementById("profesional-select");
+                const profesional = select.value;
+            
+                document.getElementById("fecha-turnos").value = "";
+                document.getElementById("turnos-container").innerHTML = "";
+            
+                cargarTurnos(profesional);
+            }
+
+        function mostrarTurnosPorFecha() {
+            const fechaSeleccionada = document.getElementById("fecha-turnos").value;
+            const container = document.getElementById("turnos-container");
+            container.innerHTML = "";
+        
+            if (!fechaSeleccionada) {
+                container.innerHTML = "<p style='text-align:center;color:#555'>Seleccioná una fecha para ver los turnos.</p>";
+                return;
+            }
+        
+            const fechaSel = new Date(fechaSeleccionada).toISOString().split("T")[0];
+        
+            const turnosFiltrados = todosLosTurnos.filter(t => {
+                const turnoFecha = new Date(t.fecha).toISOString().split("T")[0];
+                return turnoFecha === fechaSel;
+            });
+        
+            if (turnosFiltrados.length === 0) {
+                container.innerHTML = "<p style='text-align:center;color:#555'>No hay turnos para esta fecha.</p>";
+                return;
+            }
+        
+            turnosFiltrados.forEach(t => {
+                const card = document.createElement("div");
+                card.className = "turno-card";
+                card.innerHTML = `
+                    <div>
+                        <h3>${t.nombre}</h3>
+                        <p>Teléfono: ${t.contacto}</p>
+                        <p>Hora: ${t.hora}</p>
+                        <p>Servicio: ${t.servicio}</p>
+                    </div>
+                    <div class="acciones">
+                        <button class="realizado" onclick="marcarRealizado('${t.id}', '${t.profesional}')">✔ Realizado</button>
+                        <button class="cancelar" onclick="cancelarTurno('${t.id}', '${t.profesional}')">✖ Cancelar</button>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function filtrarTurnos() {
+            mostrarTurnosPorFecha();
+        }
+
+        async function marcarRealizado(id, profesional) {
+        
+            if(!confirm("¿Confirmar que el turno fue realizado?")) return;
+        
+            try {
+                const res = await fetch("/cancelar", {
+                    method: "POST",
+                    headers: {"Content-Type":"application/json"},
+                    body: JSON.stringify({id})
+                });
+                
+        
+                const data = await res.json();
+        
+                if(data.ok){
+                    alert("Turno realizado correctamente");
+                    cargarTurnos(profesional); // recargar lista
+                } else {
+                    alert("Error al realizar turno");
+                }
+        
+            } catch(error){
+                console.error("Error:", error);
+                alert("Error de conexión");
+            }
+        }
+
+
+        async function cancelarTurno(id, profesional) {
+            if(!confirm("¿Seguro que querés cancelar este turno?")) return;
+
+            const res = await fetch("/cancelar", {
+                method: "POST",
+                headers: {"Content-Type":"application/json"},
+                body: JSON.stringify({id})
+            });
+
+            const data = await res.json();
+            if(data.ok){
+                alert("Turno cancelado");
+                cargarTurnos(profesional); // recargar turnos
+            } else {
+                alert("Error al cancelar turno");
+            }
+        }
+
+
+    </script>
+</body>
+</html>

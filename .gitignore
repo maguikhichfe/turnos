@@ -1,0 +1,25 @@
+# Credenciales reales - NUNCA subir
+credentials.json
+service_account.json
+*.env
+.env
+
+# Bases de datos locales de desarrollo
+instance/
+*.db
+*.sqlite
+*.sqlite3
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+venv/
+env/
+.venv/
+
+# Editor / OS
+.DS_Store
+.vscode/
+.idea/

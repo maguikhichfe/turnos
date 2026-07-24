@@ -1,0 +1,916 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Centro de Belleza | Turnos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/styles.css">
+
+
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Playfair+Display:wght@500&display=swap');
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
+    .logo-initials {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 600;
+      color: #2d4a2d;
+      letter-spacing: -1px;
+    }
+
+        /* LOGO CIRCULAR */
+    .logo-circle {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: #e8f2d8;
+      border: 3px solid #2d4a2d;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+      overflow: hidden;
+    }
+    
+.menu-toggle{
+display:none;
+background:none;
+border:none;
+font-size:26px;
+cursor:pointer;
+}
+
+body{
+font-family:'Poppins',sans-serif;
+background:#e8f2d8;
+color:#333;
+}
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+
+/* NAV */
+
+.top-nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 30px;
+background:#faffec;
+box-shadow:0 4px 20x rgba(0,0,0,0.08);
+}
+
+.top-nav a{
+text-decoration:none;
+color:#444;
+margin-left:20px;
+font-weight:500;
+transition:0.3s;
+}
+
+.top-nav a:hover{
+color:#7aa43b;
+}
+
+/* HEADER */
+
+.beauty-header{
+text-align:center;
+padding:60px 20px 40px;
+background:#e8f2d8;
+}
+
+.beauty-header h1{
+font-family:'Playfair Display',serif;
+font-size:48px;
+color:#2d4a2d;
+}
+
+.beauty-header span{
+font-size:18px;
+color:#777;
+}
+
+/* CONTAINER */
+
+.container{
+max-width:1000px;
+margin:auto;
+padding:30px;
+}
+
+/* SECTIONS */
+
+#reservas section{
+display:none;
+}
+
+#reservas section.active{
+display:block;
+}
+
+/* HOME */
+
+.home-box{
+background:white;
+padding:50px;
+border-radius:32px;
+box-shadow:0 10px 25px rgba(0,0,0,0.06);
+text-align:center;
+}
+
+.home-box h1{
+font-family:'Playfair Display';
+font-size:36px;
+margin-bottom:10px;
+}
+
+.subtitle{
+color:#666;
+margin-bottom:40px;
+}
+
+.home-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:20px;
+max-width:450px;
+margin:auto;
+}
+
+.home-card{
+padding:1.5rem;
+font-size:18px;
+border:none;
+border-radius:14px;
+cursor:pointer;
+background:#e8f2d8;
+transition:0.3s;
+font-weight:500;
+}
+
+.home-card span{
+display:block;
+font-size:30px;
+margin-bottom:10px;
+}
+
+.home-card:hover{
+transform:translateY(-4px);
+box-shadow:0 10px 20px rgba(0,0,0,0.1);
+}
+
+.home-card.outline{
+background:white;
+border:2px solid #e8f2d8;
+}
+
+/* PROGRESS */
+
+.progress{
+display:flex;
+justify-content:space-between;
+margin-bottom:40px;
+}
+
+.progress-step{
+text-align:center;
+flex:1;
+}
+
+.step-number{
+width:40px;
+height:40px;
+border-radius:50%;
+background:#ddd;
+margin:auto;
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:bold;
+}
+
+.progress-step.active .step-number{
+background:#e8f2d8;
+}
+
+/* STEPS */
+
+.step{
+display:none;
+background:white;
+padding:40px;
+border-radius:16px;
+box-shadow:0 10px 20px rgba(0,0,0,0.05);
+}
+
+.step.active{
+display:block;
+}
+
+.step h2{
+margin-bottom:25px;
+}
+
+/* CARDS */
+
+.card-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+}
+
+.select-card{
+background:#e8f2d8;
+padding:20px;
+border-radius:14px;
+cursor:pointer;
+position:relative;
+transition:0.25s;
+}
+
+.select-card:hover{
+transform:translateY(-3px);
+}
+
+.select-card.selected{
+background:#e8f2d8;
+}
+
+.card-info{
+display:flex;
+justify-content:space-between;
+margin-top:10px;
+font-size:14px;
+}
+
+.price{
+font-weight:600;
+}
+
+.check{
+position:absolute;
+top:12px;
+right:12px;
+display:none;
+font-size:18px;
+}
+
+.select-card.selected .check{
+display:block;
+}
+
+/* AVATAR */
+
+.avatar{
+font-size:36px;
+margin-bottom:10px;
+}
+
+/* CALENDAR LAYOUT */
+
+.date-time-layout{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:25px;
+}
+
+.calendar-card,
+.time-card{
+background:#faffec;
+padding:25px;
+border-radius:14px;
+width:100%;
+}
+
+/* CALENDAR */
+
+.calendar-header{
+display:flex;
+justify-content:space-between;
+margin-bottom:10px;
+}
+
+.calendar-header button{
+border:none;
+background:#e8f2d8;
+padding:6px 12px;
+border-radius:6px;
+cursor:pointer;
+}
+
+.calendar-grid{
+display:grid;
+grid-template-columns:repeat(7,1fr);
+gap:4px;
+width:100%;
+}
+
+.calendar-grid span{
+font-size:12px;
+text-align:center;
+}
+
+.calendar-grid button{
+padding:8px;
+text-align:center;
+border-radius:6px;
+cursor:pointer;
+border:none;
+font-size:13px;
+background:white;
+}
+
+.calendar-grid button:hover{
+background:#e8f2d8;
+}
+
+/* TIMES */
+
+.time-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:10px;
+margin-top:15px;
+}
+
+.time-grid button{
+padding:10px;
+border:none;
+background:#e8f2d8;
+border-radius:8px;
+cursor:pointer;
+}
+
+/* INPUTS */
+
+input{
+width:100%;
+padding:12px;
+border-radius:8px;
+border:1px solid #ddd;
+margin-bottom:15px;
+}
+
+/* BUTTONS */
+
+.step-buttons{
+display:flex;
+justify-content:space-between;
+margin-top:20px;
+gap:10px;
+}
+
+.primary{
+background:#e8f2d8;
+border:none;
+padding:12px 25px;
+border-radius:10px;
+cursor:pointer;
+font-weight:500;
+}
+
+.back-btn{
+background:#eee;
+border:none;
+padding:12px 25px;
+border-radius:10px;
+cursor:pointer;
+}
+
+/* MIS TURNOS */
+
+#myAppointments{
+display:none;
+background:white;
+padding:40px;
+border-radius:16px;
+box-shadow:0 10px 20px rgba(0,0,0,0.05);
+}
+
+#myAppointments.active{
+display:block;
+}
+
+/* FOOTER */
+
+footer{
+text-align:center;
+padding:30px;
+color:#777;
+}
+.top-nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 60px;
+background:#2d4a2d;
+box-shadow:0 3px 10px rgba(0,0,0,0.05);
+position:sticky;
+top:0;
+z-index:100;
+}
+
+.top-nav a{
+text-decoration:none;
+color:#444;
+font-weight:500;
+margin-left:25px;
+transition:0.3s;
+}
+
+.top-nav a:hover{
+color:#7aa43b;
+}
+
+.nav-left,
+.nav-right{
+display:flex;
+align-items:center;
+}
+
+/* ======================
+   MOBILE
+====================== */
+@media (max-width: 480px) {
+    
+    .date-time-layout {
+        grid-template-columns: 1fr;
+    }
+
+    /* NAV — hamburguesa */
+    .top-nav {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        background: #2f4f2f;;
+        padding: 38px 20px;
+        flex-wrap: wrap;
+        width: 100%;
+        box-sizing: border-box;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    }
+
+    .menu-toggle {
+        display: block;
+        background: #e8f2d8;
+        border: none;
+        border-radius: 20px;
+        padding: 10px 14px;
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+    .nav-right {
+        display: none !important;
+        position: absolute;
+        top: 55px;
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        padding: 15px 0;
+        z-index: 99;
+    }
+
+    .nav-right.active {
+        display: flex !important;
+        background: transparent;
+        box-shadow: 0 8px 15px rgba(0,0,0,0.08);
+    }
+
+    .nav-right a {
+        background: linear-gradient(145deg,#e7ffad,#d4f7dc);
+        color: var(--verde-oscuro);
+        display:block;
+        padding: 14px;
+        border-radius: 40px;
+        width: 85%;
+        text-align: center;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+        transition: all 0.3s ease;
+        font-weight:500;
+        font-size:16px;
+    }
+
+    /* HEADER */
+    .beauty-header {
+        padding: 20px 15px 15px;
+    }
+
+    .beauty-header h1 {
+        font-size: 28px;
+    }
+
+    /* HOME BOX */
+    .home-box {
+        padding: 20px 15px;
+    }
+
+    .home-box h1 {
+        font-size: 22px;
+        margin-bottom: 6px;
+    }
+
+    .subtitle {
+        margin-bottom: 20px;
+        font-size: 14px;
+    }
+
+    .home-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+
+    .home-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        height: 120px;
+        width: 100%;
+        max-width: none;
+        padding: 15px 10px;
+    }
+
+    .home-card span {
+        font-size: 26px;
+        margin-bottom: 8px;
+    }
+
+    /* CONTAINER */
+    .container {
+        padding: 12px;
+    }
+
+    /* STEPS */
+    .step {
+        padding: 18px 14px;
+    }
+
+    .step h2 {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+
+    /* PROGRESS */
+    .progress {
+        margin-bottom: 20px;
+    }
+
+    .step-label {
+        font-size: 11px;
+    }
+
+    /* CALENDARIO */
+    .calendar-card,
+    .time-card {
+        padding: 14px;
+    }
+
+    .calendar-grid button {
+        padding: 5px 3px;
+        font-size: 12px;
+    }
+
+    /* FOOTER */
+    footer {
+        padding: 12px;
+        font-size: 12px;
+        margin-bottom: 0;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<nav class="top-nav">
+
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+<div class="nav-right" id="navLinks">
+<a href="/">Inicio</a>
+<a href="/#sobre">Sobre Nosotras</a>
+<a href="/#servicios">Precios</a>
+</div>
+
+
+
+</nav>
+    <br>
+    <br>
+
+    <div class="logo-circle">
+      <span class="logo-initials">MB</span>
+    </div>
+
+
+<header class="beauty-header">
+    <div class="header-inner">
+        <h1>Marian Beauty</h1>
+        <span>Centro de Belleza</span>
+    </div>
+</header>
+
+
+<main class="container">
+    <!-- SELECCIÓN INICIAL -->
+<div id="reservas">
+<section id="home" class="active">
+
+    <div class="home-box">
+        <h1>Bienvenida</h1>
+        <p class="subtitle">Reservá tu turno de manera rápida y sencilla</p>
+
+        <div class="home-grid">
+            <button class="home-card" onclick="showSection('booking')">
+                <span>📅</span>
+                Reservar turno
+            </button>
+
+            <button class="home-card outline" onclick="showSection('myAppointments')">
+                <span>💅</span>
+                Mis turnos
+            </button>
+        </div>
+    </div>
+
+</section>
+
+
+
+    <!-- RESERVAR TURNO -->
+    <section id="booking">
+        <!-- PROGRESO -->
+        <div class="progress">
+            <div class="progress-step">
+              <div class="step-number">1</div>
+              <span class="step-label">Servicio</span>
+            </div>
+
+            <div class="progress-step">
+              <div class="step-number">2</div>
+              <span class="step-label">Profesional</span>
+            </div>
+
+            <div class="progress-step">
+              <div class="step-number">3</div>
+              <span class="step-label">Fecha</span>
+            </div>
+
+            <div class="progress-step">
+              <div class="step-number">4</div>
+              <span class="step-label">Confirmar</span>
+            </div>
+
+        </div>
+
+        <!-- PASO 1 -->
+        <div class="step active">
+            <h2>Elegí tus servicios</h2>
+            <div class="grid">
+                
+                <!-- 💅 MANOS -->
+                <h3>💅 Manos</h3>
+                <div class="card-grid">
+                
+                <div class="select-card multi" data-type="manos" data-service="Esmaltado común">
+                    <h3>Esmaltado común</h3>
+                    <p>Color tradicional</p>
+                    <div class="card-info">
+                    </div>
+                    <span class="check">✓</span>
+                </div>
+                <div class="select-card multi" data-type="extra" data-service="decoracion">
+                    <h3>Decoración</h3>
+                    <p>Diseños, nail art</p>
+                    <div class="card-info">
+
+                    </div>
+                    <span class="check">✓</span>
+                </div>
+                
+                <div class="select-card multi" data-type="manos" data-service="Semipermanente">
+                    <h3>Semipermanente</h3>
+                    <p>Larga duración</p>
+                    <div class="card-info">
+
+                    </div>
+
+                    <span class="check">✓</span>
+                </div>
+                
+                <div class="select-card multi" data-type="manos" data-service="Kapping / Dipping">
+                    <h3>Kapping / Dipping</h3>
+                    <p>Refuerzo natural</p>
+                    <div class="card-info">
+
+                    </div>
+
+                    <span class="check">✓</span>
+                </div>
+                
+                <div class="select-card multi" data-type="manos" data-service="Soft gel">
+                    <h3>Soft gel</h3>
+                    <p>Extensión con tips</p>
+                    <div class="card-info">
+
+                    </div>
+
+                    <span class="check">✓</span>
+                </div>
+                
+                </div>
+                
+                <!-- 🦶 PIES -->
+                <h3>🦶 Pies</h3>
+                <div class="card-grid">
+                
+                <div class="select-card multi" data-type="pies" data-service="Belleza de pies">
+                    <h3>Belleza de pies</h3>
+                    <p>Cuidado básico</p>
+                    <div class="card-info">
+
+                    </div>
+                    <span class="check">✓</span>
+                </div>
+                
+                <div class="select-card multi" data-type="pies" data-service="Pedicuría">
+                    <h3>Pedicuría</h3>
+                    <p>Tratamiento completo</p>
+                    <div class="card-info">
+                    </div>
+                    <span class="check">✓</span>
+                </div>
+                
+                </div>
+                
+                <!-- ❌ RETIROS -->
+                <h3>❌ Retiros</h3>
+                <div class="card-grid">
+                
+                <div class="select-card multi" data-type="manos" data-service="Retiro semipermanente">
+                    <h3>Retiro semipermanente</h3>
+                    <div class="card-info">
+                    </div>
+                    <span class="check">✓</span>
+                </div>
+                
+                <div class="select-card multi" data-type="manos" data-service="Retiro kapping">
+                    <h3>Retiro kapping</h3>
+                    <div class="card-info">
+
+                    </div>
+ 
+                    <span class="check">✓</span>
+                </div>
+                
+                <div class="select-card multi" data-type="manos" data-service="Retiro soft gel">
+                    <h3>Retiro soft gel</h3>
+                    <div class="card-info">
+                    </div>
+                    <span class="check">✓</span>
+                </div>
+                
+                <div class="select-card multi" data-type="manos" data-service="Arreglo por uña">
+                    <h3>Arreglo (por uña)</h3>
+                    <div class="card-info">
+                    </div>
+                    <span class="check">✓</span>
+                </div>
+                
+                </div>
+            </div>
+                <div class="step-buttons">
+                    <button class="back-btn" onclick="prevStep()">Atrás</button>
+                    <button class="primary" onclick="continueStep()">Continuar</button>
+                </div>
+
+        </div>
+
+        <!-- PASO 2 -->
+        <div class="step">
+            <h2>Elegí un profesional</h2>
+            <div class="grid">
+                <div class="card-grid">
+                    <div class="select-card" data-professional="cualquiera">
+                        <div class="avatar">👩</div>
+                        <h3>Primer Profesional Disponible</h3>
+                        <span class="check">✓</span>
+                    </div>
+                    <div class="select-card" data-professional="Tania">
+                        <div class="avatar">👩</div>
+                        <h3>Thania</h3>
+                        <p>Manicurista</p>
+                        <span class="check">✓</span>
+                    </div>
+                    <div class="select-card" data-professional="Rocio">
+                        <div class="avatar">👩</div>
+                        <h3>Rocio</h3>
+                        <p>Manicurista</p>
+                        <span class="check">✓</span>
+                    </div>
+                    <div class="select-card" data-professional="Pamela">
+                        <div class="avatar">👩</div>
+                        <h3>Pamela</h3>
+                        <p>Manicurista</p>
+                        <span class="check">✓</span>
+                    </div>
+                </div>
+            </div>
+                <div class="step-buttons">
+                    <button class="back-btn" onclick="prevStep()">Atrás</button>
+                    <button class="primary" onclick="continueStep()">Continuar</button>
+                </div>
+
+        </div>
+
+        <!-- PASO 3 -->
+        <div class="step">
+            <div class="date-time-layout">
+                <!-- CALENDARIO -->
+                <div class="calendar-card">
+                    <div class="calendar-header">
+                        <button onclick="changeMonth(-1)">‹</button>
+                        <strong id="calendarTitle"></strong>
+                        <button onclick="changeMonth(1)">›</button>
+                    </div>
+                    <div class="calendar-grid" id="calendarGrid">
+                        <span>lu</span><span>ma</span><span>mi</span><span>ju</span><span>vi</span><span>sá</span><span>do</span>
+                    </div>
+                </div>
+                <!-- HORARIOS -->
+                <div class="time-card">
+                    <div class="selected-date">
+                        <small>Fecha seleccionada</small>
+                        <strong id="selectedDateText">Seleccioná un día</strong>
+                    </div>
+                    <h4>🕒 Horarios disponibles</h4>
+                    <div class="time-grid" id="timeGrid"></div>
+
+                </div>
+            </div>
+                <div class="step-buttons">
+                    <button class="back-btn" onclick="prevStep()">Atrás</button>
+                    <button class="primary" onclick="continueStep()">Continuar</button>
+                </div>
+
+        </div>
+
+        <!-- PASO 4 -->
+        <div class="step">
+            <h2>Confirmar turno</h2>
+            <input type="text" id="Name" placeholder="Nombre">
+            <input type="text" id="Contact" placeholder="Teléfono">
+            <input type="text" id="Email" placeholder="Correo electrónico">
+            
+            <div class="step-buttons">
+                <button class="back-btn" onclick="prevStep()">Atrás</button>
+                <button class="primary"  id="confirmBtn">Confirmar</button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- MIS TURNOS -->
+    <section id="myAppointments">
+        <h2>Mis Turnos</h2>
+        <label for="contactInput">Ingresa tu correo o teléfono:</label>
+        <input type="text" id="contactInput" required>
+        <button id="checkAppointments">Ver Mis Turnos</button>
+        <div id="appointmentsList"></div>
+    </section>
+
+</div>
+
+
+
+   
+</main>
+
+<footer>
+    © 2026 Centro de Belleza
+</footer>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/static/script.js"></script>
+</html>
